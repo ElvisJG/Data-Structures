@@ -27,6 +27,9 @@ class LRUCache:
     def get(self, key):
         if key not in self.storage.keys():
             return None
+        else:
+            self.record.move_to_front(self.storage[key][1])
+            return self.storage[key][0]
 
     """
     Adds the given key-value pair to the cache. The newly-
